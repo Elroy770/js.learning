@@ -1,6 +1,6 @@
 function generatePassword(length,withSymbols,withNumbers,withLowercase,withUppercase){
     const symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-    const numbers = '0123456789';
+    const numbers = '012345678901234567890123456789';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
