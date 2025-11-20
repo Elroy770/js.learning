@@ -11,7 +11,7 @@ function generatePassword(length,withSymbols,withNumbers,withLowercase,withUpper
     if (withUppercase) validChars += uppercase;
 
     let password = '';
-    if (password.length === 0) { 
+    if (validChars.length === 0) { 
         return 'Please select at least one character type';
     }
     for (let i = 0; i < length; i++){
