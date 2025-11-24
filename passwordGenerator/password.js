@@ -3,6 +3,7 @@ function generatePassword(length, withSymbols, withNumbers, withLowercase, withU
     const numbers = '012345678901234567890123456789';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const basePassword = document.getElementById('basePassword').value || '';
 
     let validChars = '';
     if (withSymbols) validChars += symbols;
@@ -18,8 +19,8 @@ function generatePassword(length, withSymbols, withNumbers, withLowercase, withU
         return 'Password length should be at least 4 and not more than 20 characters';
     }
 
-    let password = '';
-    for (let i = 0; i < length; i++) {
+    let password = basePassword;
+    for (let i = 0; i < (length - basePassword.length); i++) {
         const index = Math.floor(Math.random() * validChars.length);
         password += validChars[index];
     }
@@ -30,6 +31,7 @@ function generatePassword(length, withSymbols, withNumbers, withLowercase, withU
 const generateButton = document.getElementById('Generate');
 const passwordEl = document.getElementById('password');
 const copyBtn = document.getElementById('copyBtn');
+const returnBtn = document.getElementById('returnBtn');
 
 // הצגת הכפתור רק כשיש סיסמה תקינה
 function updateCopyButton() {
@@ -37,7 +39,10 @@ function updateCopyButton() {
     const hasPassword = txt !== '' && !txt.includes('Please') && !txt.includes('Password length');
     copyBtn.style.display = hasPassword ? 'flex' : 'none';
 }
-
+// לחזור לדף הראשי
+returnBtn.onclick = function () {
+    window.location.href = '../index.html'
+}
 // קריאה אחרי יצירת סיסמה (ודא שאתה קורא לזה אחרי שאתה קובע textContent)
 generateButton.onclick = function () {
     const length = parseInt(document.getElementById('length').value);
